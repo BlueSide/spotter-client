@@ -1,20 +1,76 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<nav [ngClass]="{'connection-warning': !connected}" class="uk-navbar uk-navbar-container uk-margin">
+    
+    <div class="uk-navbar-left">
+        <a href="#offcanvas-slide" uk-icon="icon: menu; ratio: 2" class="uk-padding-small" uk-toggle></a>
+        <span *ngIf="!connected" id="warning-badge" class="uk-badge">!</span>
+        <div id="offcanvas-slide" uk-offcanvas>
+            <div class="uk-offcanvas-bar">
+                <a href="#offcanvas-slide" uk-icon="icon: close; ratio: 2" class="uk-align-right" uk-toggle></a>
 
+                <div class="uk-margin">
+                    <div class="uk-inline">
+                        <span *ngIf="connected" class="uk-form-icon" uk-icon="icon: check"></span>
+                        <span *ngIf="!connected" class="uk-form-icon" uk-icon="icon: warning"></span>
+                        <input id="host" [(ngModel)]="ballsports.host" class="uk-input uk-form-large uk-form-danger" type="text" />
+                    </div>
+                </div>
+                <div>
+                    <button class="uk-button uk-button-default" (click)="getData()">
+                        Connect
+                        <span *ngIf="loading" class="uk-margin-left" uk-spinner="ratio: 0.75"></span>
+                    </button>    
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <h2 class="uk-align-center">{{matchTitle}}</h2>
+    <div *ngIf="!connected" class="uk-align-center">Can't connect to Ballsports</div>
+</nav>
+
+<div class="uk-flex uk-flex-wrap-around uk-flex-center">
+    <team-stat *ngFor="let teamStat of teamStats" [stat]="teamStat"></team-stat>
+</div>
+
+<div class="uk-margin-top" uk-grid>
+
+    <!-- Home players -->
+    <div>
+        <ul class="uk-tab-left" uk-tab>
+            <li *ngFor="let player of playersTeam0" class="player-button" (click)="selectPlayer(player, 0)">
+                <a class="uk-text-left player">
+                    {{player.name}}
+                    <span class="uk-align-right player player-number">{{player.number}}.</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Player stats -->
+    <div class="uk-align-center uk-width-1-3 uk-flex uk-flex-wrap divider-right padding-fix">
+        <player-stat *ngFor="let stat of selectedPlayerTeam0.stats" [stat]="stat"></player-stat>
+    </div>
+
+    <!-- Player stats -->
+    <div class="uk-align-center  uk-width-1-3 uk-flex uk-flex-wrap padding-fix">
+        <player-stat *ngFor="let stat of selectedPlayerTeam1.stats" [stat]="stat"></player-stat>
+    </div>
+
+    <!-- Away players -->
+    <div>
+        <ul class="uk-tab-right" uk-tab>
+            <li *ngFor="let player of playersTeam1" class="player-button">
+                <a (click)="selectPlayer(player, 1)" class="uk-text-right player">
+                    <span class="uk-align-left player player-number">{{player.number}}.</span>
+                    {{player.name}}
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- 
+    <div class="uk-align-center">
+        <h1 class="uk-text-center">Team stats</h1>
+        <team-stat *ngFor="let stat of teamStats" [stat]="stat"></team-stat>
+    </div>
+    -->
+</div>    
