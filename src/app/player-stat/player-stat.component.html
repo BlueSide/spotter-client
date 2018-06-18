@@ -1,0 +1,12 @@
+<div *ngIf="stat.title" class="uk-width-auto stat">
+    <h3 class="uk-text-center">{{stat.title}}</h3>
+    <div class="uk-text-center uk-grid-collapse" uk-grid>
+        <div>
+            <input class="uk-input" type="text" (change)="update()" [(ngModel)]="stat.value" />
+        </div>
+        <div>
+            <button class="uk-button uk-button-default" (click)="increment()"><span uk-icon="icon: plus"></span></button><br />
+            <button class="uk-button uk-button-default" (click)="decrement()"><span uk-icon="icon: minus"></span></button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+$input-width: 60px;
+$input-height: 80px;
+
+input {
+    text-align: center;
+    font-size: 20pt;
+    min-width: $input-width;
+    max-width: $input-width;
+    min-height: $input-height;
+    max-height: $input-height;
+}
+
+.stat {
+    min-width: 200px;
+    margin-bottom: 23px;
+}
+
+h3 {
+    font-size: 14pt;
+}
+
+button {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

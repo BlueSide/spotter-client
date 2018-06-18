@@ -25,7 +25,7 @@ export class AppComponent {
     
     constructor(private ballsports: BallsportsService)
     {
-        this.getData();
+        setInterval(this.getData.bind(this), 1000);
     }
 
     public getData()
@@ -33,7 +33,9 @@ export class AppComponent {
         this.loading = true;
         this.ballsports.getAllStats().subscribe(
             (data) => {
-                this.teamStats = data.teamStats;
+                this.teamStats = data.teamStats.filter((item) => {
+                    return (!item.title) || (item.title != '');
+                });
                 this.matchTitle = data.title;
                 this.matchId = data.matchId;
 

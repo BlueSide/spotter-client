@@ -1,0 +1,13 @@
+{
+  "name": "Spotter Application",
+  "short_name": "Spotter App",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "An application to feed data into Ballsports",
+  "icons": [{
+    "src": "assets/UNITED48x48.ico",
+    "sizes": "48x48",
+    "type": "image/png"
+  }]
+}

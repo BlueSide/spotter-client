@@ -1,0 +1,42 @@
+.connection-warning {
+    color: #f0506e;
+    background-color: #fef4f6;
+}
+
+#warning-badge {
+    position: relative;
+    top: -15px;
+    left: -30px;
+}
+
+.player-button:hover {
+    background-color: #d0e7ff;
+    cursor: pointer;
+}
+
+.uk-active {
+    background: #eeeeee;
+}
+
+.player-number {
+    font-weight: 600;
+}
+
+h1.uk-align-center {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.player {
+    margin-bottom: 10px;
+}
+
+.divider-right {
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: #b7b7b7;
+}
+
+.padding-fix {
+    padding-left: 25px;
+}

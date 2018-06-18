@@ -28,9 +28,11 @@
     <div *ngIf="!connected" class="uk-align-center">Can't connect to Ballsports</div>
 </nav>
 
-<div class="uk-flex uk-flex-wrap-around uk-flex-center">
-    <team-stat *ngFor="let teamStat of teamStats" [stat]="teamStat"></team-stat>
-</div>
+<!-- 
+     <div class="uk-grid-divider" uk-grid>
+     <team-stat *ngFor="let teamStat of teamStats" [stat]="teamStat"></team-stat>
+     </div>
+-->
 
 <div class="uk-margin-top" uk-grid>
 
