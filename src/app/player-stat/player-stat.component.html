@@ -1,6 +1,6 @@
-<div *ngIf="stat.title" class="uk-width-auto stat">
-    <h3 class="uk-text-center">{{stat.title}}</h3>
-    <div class="uk-text-center uk-grid-collapse" uk-grid>
+<div *ngIf="stat.title" class="uk-width-auto uk-align-center stat">
+    <h3 class="uk-width-small">{{stat.title}}</h3>
+    <div class="uk-grid-collapse uk-grid-match-height" uk-grid>
         <div>
             <input class="uk-input" type="text" (change)="update()" [(ngModel)]="stat.value" />
         </div>

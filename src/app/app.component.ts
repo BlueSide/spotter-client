@@ -23,7 +23,7 @@ export class AppComponent {
     selectedPlayerTeam1: any = {};
 
     
-    constructor(private ballsports: BallsportsService)
+    constructor(public ballsports: BallsportsService)
     {
         setInterval(this.getData.bind(this), 1000);
     }
