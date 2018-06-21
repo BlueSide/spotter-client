@@ -22,10 +22,13 @@ export class AppComponent {
     selectedPlayerTeam0: any = {};
     selectedPlayerTeam1: any = {};
 
+    lastSelectedPlayer0: number = 0;
+    lastSelectedPlayer1: number = 0;
     
     constructor(public ballsports: BallsportsService)
     {
-        setInterval(this.getData.bind(this), 1000);
+        //setInterval(this.getData.bind(this), 5000);
+        this.getData();
     }
 
     public getData()
@@ -33,10 +36,14 @@ export class AppComponent {
         this.loading = true;
         this.ballsports.getAllStats().subscribe(
             (data) => {
-                this.teamStats = data.teamStats.filter((item) => {
-                    return (!item.title) || (item.title != '');
-                });
-                this.matchTitle = data.title;
+                
+                //console.log(data);
+                /*
+                  this.teamStats = data.teamStats.filter((item) => {
+                  return (!item.title) || (item.title != '');
+                  });
+                */
+                //this.matchTitle = data.title;
                 this.matchId = data.matchId;
 
                 this.playersTeam0 = data.players.filter((item, index) => {
@@ -65,14 +72,15 @@ export class AppComponent {
                     });
                 });
 
-
-                
+                this.selectedPlayerTeam0 = this.playersTeam0[this.lastSelectedPlayer0];
+                this.selectedPlayerTeam1 = this.playersTeam1[this.lastSelectedPlayer1];
+                /*
                 //NOTE: Select the first player of any team if none is selected
                 if(Object.keys(this.selectedPlayerTeam0).length === 0)
-                    this.selectedPlayerTeam0 = this.playersTeam0[0];
+                this.selectedPlayerTeam0 = this.playersTeam0[0];
                 if(Object.keys(this.selectedPlayerTeam1).length === 0)
-                    this.selectedPlayerTeam1 = this.playersTeam1[0];
-                
+                this.selectedPlayerTeam1 = this.playersTeam1[0];
+                */
                 this.connected = true;
                 this.loading = false;
             },
@@ -84,9 +92,17 @@ export class AppComponent {
         );
     }
 
-    public selectPlayer(player: any, team: number)
+    public selectPlayer(player: any, team: number, index: number)
     {
-        if(team === 0) this.selectedPlayerTeam0 = player;
-        if(team === 1) this.selectedPlayerTeam1 = player;
+        if(team === 0)
+        {
+            this.selectedPlayerTeam0 = player;
+            this.lastSelectedPlayer0 = index;
+        }
+        if(team === 1)
+        {
+            this.selectedPlayerTeam1 = player;   
+            this.lastSelectedPlayer1 = index;
+        }
     }
 }

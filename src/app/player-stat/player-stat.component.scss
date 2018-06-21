@@ -1,9 +1,9 @@
-$input-width: 60px;
-$input-height: 80px;
+$input-width: 50px;
+$input-height: 40px;
 
 input {
     text-align: center;
-    font-size: 20pt;
+    font-size: 16pt;
     min-width: $input-width;
     max-width: $input-width;
     min-height: $input-height;
@@ -11,12 +11,14 @@ input {
 }
 
 .stat {
-    min-width: 200px;
-    margin-bottom: 23px;
+    min-width: 104px;
+    margin-bottom: 18px;
 }
 
-h3 {
-    font-size: 14pt;
+.stat-title {
+    max-width: 110px;
+    margin-bottom: 5px;
+    font-size: 12pt;
 }
 
 button {
@@ -24,4 +26,6 @@ button {
     padding-bottom: 0px;
     padding-left: 10px;
     padding-right: 10px;
+
+    height: $input-height;
 }

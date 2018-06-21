@@ -1,12 +1,14 @@
-<div *ngIf="stat.title" class="uk-width-auto uk-align-center stat">
-    <h3 class="uk-width-small">{{stat.title}}</h3>
+<div *ngIf="stat.title" class="uk-align-center stat">
+    <h3 class="stat-title">{{stat.title}}</h3>
     <div class="uk-grid-collapse uk-grid-match-height" uk-grid>
+        <div>
+            <button class="uk-button uk-button-default" (click)="decrement()"><span uk-icon="icon: minus; ratio: 0.5"></span></button>
+        </div>
         <div>
             <input class="uk-input" type="text" (change)="update()" [(ngModel)]="stat.value" />
         </div>
         <div>
-            <button class="uk-button uk-button-default" (click)="increment()"><span uk-icon="icon: plus"></span></button><br />
-            <button class="uk-button uk-button-default" (click)="decrement()"><span uk-icon="icon: minus"></span></button>
+            <button class="uk-button uk-button-default" (click)="increment()"><span uk-icon="icon: plus; ratio: 0.5"></span></button>
         </div>
     </div>
 </div>

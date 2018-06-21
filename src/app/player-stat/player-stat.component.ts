@@ -14,6 +14,7 @@ export class PlayerStatComponent
 
     public update()
     {
+        console.log(this.stat);
         this.ballsports.sendPlayerStat(this.stat).subscribe((data) => {
             console.log(data);
         });

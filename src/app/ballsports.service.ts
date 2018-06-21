@@ -8,22 +8,23 @@ import { TeamStat } from './team-stat/team-stat.component';
 export class BallsportsService
 {
 
-    public host: string = 'http://127.0.0.1:3301';
+    public host: string = 'http://127.0.0.1:3301/';
+    public matchId: string = '12';
     
     constructor(private http: HttpClient)
     {
     }
 
     public getAllStats(): Observable<any> {
-        return this.http.get(this.host, this.makeHeaders());
+        return this.http.get(`${this.host}?${this.matchId}`, this.makeHeaders());
     }
     
     public sendTeamStat(stat: TeamStat): Observable<any> {
-        return this.http.post(this.host, stat, this.makeHeaders());
+        return this.http.post(`${this.host}?${this.matchId}`, stat, this.makeHeaders());
     }
 
     public sendPlayerStat(stat: any): Observable<any> {
-        return this.http.post(this.host, stat, this.makeHeaders());
+        return this.http.post(`${this.host}?${this.matchId}`, stat, this.makeHeaders());
     }
 
     private makeHeaders(): any
